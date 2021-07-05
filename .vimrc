@@ -12,7 +12,7 @@ endif
 
 let g:vim_bootstrap_langs = "javascript,php,html,ruby"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
-let g:vim_bootstrap_theme = "molokai"
+let g:vim_bootstrap_theme = "codedark"
 let g:vim_bootstrap_frams = "vuejs"
 
 if !filereadable(vimplug_exists)
@@ -34,7 +34,8 @@ call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint'
 Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-snippets'
@@ -55,9 +56,10 @@ Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
 Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
-Plug 'editor-bootstrap/vim-bootstrap-updater'
+"" Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-Plug 'tomasr/molokai'
+Plug 'tomasiser/vim-code-dark'
+
 
 
 if isdirectory('/usr/local/opt/fzf')
@@ -183,8 +185,8 @@ set ruler
 set number
 
 let no_buffers_menu=1
-colorscheme molokai
-
+colorscheme codedark
+set clipboard=unnamedplus       " Copy/paste between vim and other programs.
 
 set mousemodel=popup
 set t_Co=256
@@ -251,7 +253,7 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'transparent'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -569,6 +571,17 @@ let g:vim_vue_plugin_load_full_syntax = 1
 
 
 "*****************************************************************************
+
+" transparent bg
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+" For Vim<8, replace EndOfBuffer by NonText
+autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
+
+"for aireline
+ :hi airline_c  ctermbg=NONE guibg=NONE
+ :hi airline_tabfill ctermbg=NONE guibg=NONE
+
+
 "*****************************************************************************
 
 "" Include user's local vim config

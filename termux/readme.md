@@ -1,7 +1,6 @@
-Make Termux terminal look Awesome Color, Font, Style
-Requirements-  curl tool
-
-type following command
+# Make Termux terminal look Awesome
+### Requirements-  curl tool
+##### type following command
 ```bash
 apt update
 ```
